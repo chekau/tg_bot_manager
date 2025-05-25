@@ -46,6 +46,16 @@ async def report_money(message: types.Message):
 Расходы: {all_expence} руб
 Баланс: {balance} руб
                         """)
+    
+@dp.message(Command("balance"))
+async def balance_money(message: types.Message):
+    global balance
+    await message.answer(f"Текущий баланс: {balance} руб")
+
+async def main():
+
+    await dp.start_polling(bot)
+
 
 
 
