@@ -26,7 +26,7 @@ async def income_money(message: types.Message):
 доход {words[1]} руб добавлен с пометкой {words[2:]},
 текущий баланс: {balance}""")
     
-    
+
 @dp.message(Command("expense"))
 async def expense_money(message: types.Message):
     global balance,all_expence
@@ -36,7 +36,16 @@ async def expense_money(message: types.Message):
     await message.answer(f"""Отлично!,
 расход {words[1]} руб в категории {words[2:]},
 текущий баланс: {balance}""")
-    
+
+@dp.message(Command("report"))
+async def report_money(message: types.Message):
+    global all_income,all_expence,balance
+    words = message.text.split()
+    await message.answer(f"""Отчёт за неделю:
+Доходы: {all_income} руб
+Расходы: {all_expence} руб
+Баланс: {balance} руб
+                        """)
 
 
 
